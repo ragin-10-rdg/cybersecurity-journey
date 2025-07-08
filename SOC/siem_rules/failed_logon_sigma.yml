@@ -1,0 +1,15 @@
+title: Multiple Failed Logon Attempts
+id: 7a2b91be-cfd5-4c8e-a29c-40a3fcd56ac3
+description: Detects multiple failed logon attempts from a single source
+status: experimental
+author: Kali GPT
+logsource:
+  category: authentication
+  product: windows
+detection:
+  selection:
+    EventID: 4625
+  condition: selection | count() by SourceIP > 5
+level: medium
+tags:
+  - attack.T1110
